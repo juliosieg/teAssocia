@@ -72,7 +72,7 @@ and open the template in the editor.
                                 
                                 <div class="col-lg-10 col-md-10 col-sm-10" style="padding-bottom: 10px;">
 
-                                    <input type="text" id="cpf" class="form-control input-md" name="cpf" placeholder="Entre com o CPF" class="span3">
+                                    <input type="text" id="cpfAluno" class="form-control input-md" name="cpfAluno" placeholder="Entre com o CPF" class="span3">
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-sm-2" style="padding-bottom: 10px;">
                                     <input type="button" class="btn btn-success" value="Consultar" onclick="consultaCpf()"/>
@@ -85,31 +85,31 @@ and open the template in the editor.
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
                                         <label>RG</label>
-                                        <input id="rg" type="text" class="form-control input-md" name="rg" class="span3">
+                                        <input id="rgAluno" type="text" class="form-control input-md" name="rg" class="span3">
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
                                         <label>Nome</label>
-                                        <input id="nome" type="text" class="form-control input-md" name="nome" class="span3" >
+                                        <input id="nomeAluno" type="text" class="form-control input-md" name="nome" class="span3" >
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
                                         <label>Endereço</label>
-                                        <input id="endereco" type="text" class="form-control input-md" name="endereco" placeholder="Exemplo: Rua Machado de Assis, 15 - Apto 404 Bloco B" class="span3">
+                                        <input id="enderecoAluno" type="text" class="form-control input-md" name="endereco" placeholder="Exemplo: Rua Machado de Assis, 15 - Apto 404 Bloco B" class="span3">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
                                         <label>UF</label>
-                                        <select class="input-md form-control" id="uf">
-                                            <option value="Selecione um Item" >Selecione um Item</option>
+                                        <select class="input-md form-control" id="ufAluno" onchange="carregaCidades()">
+                                            <option value="Selecione uma UF" >Selecione uma UF</option>
                                         </select>
                                     </div>
 
                                     <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
                                         <label>Cidade</label>
-                                        <select class="input-md form-control" id="cidade">
-                                            <option value="Selecione um Item" >Selecione um Item</option>
+                                        <select class="input-md form-control" id="cidadeAluno">
+                                            <option value="Selecione uma UF" >Selecione uma UF</option>
                                         </select>
                                     </div>
                                 </div>
@@ -117,49 +117,49 @@ and open the template in the editor.
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
                                         <label>Bairro</label>
-                                        <input type="text" class="form-control input-md" name="bairro" id="bairro" class="span3" >
+                                        <input type="text" class="form-control input-md" name="bairro" id="bairroAluno" class="span3" >
                                     </div>
 
                                     <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
                                         <label>CEP</label>
-                                        <input type="text" class="form-control input-md" name="cep" id="cep" class="span3">
+                                        <input type="text" class="form-control input-md" name="cep" id="cepAluno" class="span3">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
                                         <label>Telefone Residencial</label>
-                                        <input type="text" class="form-control input-md" name="telefone" id="telefone" class="span3">
+                                        <input type="text" class="form-control input-md" name="telefone" id="telefoneAluno" class="span3">
                                     </div>
 
                                     <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
                                         <label>Telefone Celular</label>
-                                        <input type="text" class="form-control input-md sp_celphones" name="celular" id="endereco" class="span3">
+                                        <input type="text" class="form-control input-md sp_celphones" name="celular" id="celularAluno" class="span3">
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
                                         <label>E-mail</label>
-                                        <input type="email" class="form-control input-md" name="nome" class="span3">
+                                        <input type="email" id="emailAluno" class="form-control input-md" name="nome" class="span3">
                                     </div>
 
                                     <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
                                         <label>Curso</label>
-                                        <input type="text" class="form-control input-md" name="nome" class="span3">
+                                        <input type="text" id="cursoAluno" class="form-control input-md" name="nome" class="span3">
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
                                         <label>Semestre</label>
-                                        <select class="input-md form-control" >
+                                        <select class="input-md form-control" id="semestreAluno">
                                             <option value="Selecione um Item" >Selecione um Item</option>
                                         </select>
                                     </div>
 
                                     <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
                                         <label>Parada</label>
-                                        <select class="input-md form-control" >
+                                        <select class="input-md form-control" id="paradaAluno">
                                             <option value="Selecione um Item" >Selecione um Item</option>
                                         </select>
                                     </div>
@@ -168,7 +168,7 @@ and open the template in the editor.
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
                                         <label>Entidade</label>
-                                        <select class="input-md form-control" >
+                                        <select class="input-md form-control" id="entidadeAluno">
                                             <option value="Selecione um Item" >Selecione um Item</option>
                                         </select>
                                     </div>
