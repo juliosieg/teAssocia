@@ -17,10 +17,11 @@ and open the template in the editor.
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">    
 
+        <script src="js/sweetalert.min.js"></script>
+        <link rel="stylesheet" href="css/sweetalert.css">
 
-
-        <link rel="stylesheet" href="css/login.css">
-        <script src="js/login.js"></script>
+        <link rel="stylesheet" href="css/index.css">
+        <script src="js/index.js"></script>
 
 
         <title>Login - teAssocia</title>
@@ -33,7 +34,7 @@ and open the template in the editor.
                     <p align="center"><img src="images/logoTeAssocia.png" width="80%"/></p>
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Login em <b>Associação das Capivaras</b></h3>
+                            <h3 class="panel-title">Login em <b>Associação dos Universitários e Estudantes de Ibirubá</b></h3>
                         </div>
                         <div class="panel-body">
                             <form accept-charset="UTF-8" role="form">
@@ -51,16 +52,20 @@ and open the template in the editor.
                                         <div class="or or-lg"></div>
                                         <button onclick="abreModalCadastro()" type="button" class="btn btn-success btn-lg">Cadastrar</button>
                                     </div>
+                                    
 
                                 </fieldset>
+                                
                             </form>
+                            <br>
+                            <p align="center">Um produto <a href="http://www.whdev.com.br"><img src="images/logo.png" width="20%"/></a></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </body>
-    
+
     <div id="modalCadastro" class="modal fade" tabindex="-1" role="dialog" >
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -69,7 +74,7 @@ and open the template in the editor.
                         <form>
                             <label>Consulta de CPF</label>
                             <div class="row">
-                                
+
                                 <div class="col-lg-10 col-md-10 col-sm-10" style="padding-bottom: 10px;">
 
                                     <input type="text" id="cpfAluno" class="form-control input-md" name="cpfAluno" placeholder="Entre com o CPF" class="span3">
@@ -174,8 +179,10 @@ and open the template in the editor.
                                     </div>
                                 </div>
 
-                                <input type="submit" value="Cadastrar" class="btn btn-primary pull-right">
+                                <input type="button" value="Cadastrar" onclick="validaCadastro()" class="btn btn-primary pull-right">
+                                
                                 <div class="clearfix"></div>
+
 
                             </div>
                         </form>

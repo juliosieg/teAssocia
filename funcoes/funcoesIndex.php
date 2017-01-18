@@ -6,6 +6,10 @@ if (isset($_POST['idEstado'])) {
     $idEstado = $_POST['idEstado'];
 }
 
+if (isset($_POST['consultaCpf'])) {
+    $consultaCpf = $_POST['consultaCpf'];
+}
+
 switch ($funcao) {
 
     case "carregaEntidades":
@@ -22,6 +26,9 @@ switch ($funcao) {
         break;
     case "carregaParadas":
         carregaParadas();
+        break;
+    case "consultaCpf":
+        consultaCpf($consultaCpf);
         break;
 }
 
@@ -79,7 +86,7 @@ function carregaCidades($idEstado) {
 
     $conexao = new Conexao(); // Abre conexao
     $conexao->Conexao();
-    $sql = "select * from cidade where idestado = ".$idEstado;
+    $sql = "select * from cidade where idestado = " . $idEstado;
     $conexao->Executar($sql);
     $result = $conexao->MontarResultados();
     $conexao->Liberar();
@@ -105,5 +112,19 @@ function carregaParadas() {
     echo $json;
 }
 
+function consultaCpf($consultaCpf) {
+
+    include 'conexao.php';
+
+    $conexao = new Conexao(); // Abre conexao
+    $conexao->Conexao();
+    $sql = "select * from associado where cpf = ".$consultaCpf;
+    $conexao->Executar($sql);
+    $result = $conexao->ContarLinhas();
+    $conexao->Liberar();
+    $conexao->Fechar();
+
+    echo $result;
+}
 ?>
 
