@@ -35,10 +35,28 @@ $(document).ready(function () {
         $("#semestreAluno").val("");
         $("#paradaAluno").val("");
         $("#entidadeAluno").val("");
+        $("#senhaAluno").val("");
         $("#cpfAluno").removeAttr("disabled");
 
         $("#cidadeAluno").find('option').remove();
         $("#cidadeAluno").append("<option value=''>Selecione uma UF</option>");
+
+        $("#rgAluno").removeClass("nao-preenchido");
+        $("#nomeAluno").removeClass("nao-preenchido");
+        $("#cpfAluno").removeClass("nao-preenchido");
+        $("#enderecoAluno").removeClass("nao-preenchido");
+        $("#ufAluno").removeClass("nao-preenchido");
+        $("#cidadeAluno").removeClass("nao-preenchido");
+        $("#bairroAluno").removeClass("nao-preenchido");
+        $("#cepAluno").removeClass("nao-preenchido");
+        $("#telefoneAluno").removeClass("nao-preenchido");
+        $("#celularAluno").removeClass("nao-preenchido");
+        $("#emailAluno").removeClass("nao-preenchido");
+        $("#cursoAluno").removeClass("nao-preenchido");
+        $("#semestreAluno").removeClass("nao-preenchido");
+        $("#paradaAluno").removeClass("nao-preenchido");
+        $("#entidadeAluno").removeClass("nao-preenchido");
+        $("#senhaAluno").removeClass("nao-preenchido");
 
         carregaEntidades();
         carregaSemestres();
@@ -152,7 +170,7 @@ function carregaEntidades() {
             $("#entidadeAluno").append("<option value=''>Selecione um item</option>");
 
             $.each(test, function (i, item) {
-                $("#entidadeAluno").append("<option id=" + item.id + " campus=" + item.campus + " nome=" + item.nome + ">" + item.nome + " - " + item.campus + "</option>")
+                $("#entidadeAluno").append("<option value=" + item.id + " campus=" + item.campus + " nome=" + item.nome + ">" + item.nome + " - " + item.campus + "</option>")
             });
 
 
@@ -173,7 +191,7 @@ function carregaSemestres() {
             $("#semestreAluno").append("<option value=''>Selecione um item</option>");
 
             $.each(test, function (i, item) {
-                $("#semestreAluno").append("<option id=" + item.id + " descricao=" + item.descricao + ">" + item.descricao + "</option>")
+                $("#semestreAluno").append("<option value=" + item.id + " descricao=" + item.descricao + ">" + item.descricao + "</option>")
             });
 
 
@@ -193,7 +211,7 @@ function carregaUfs() {
             $("#ufAluno").append("<option value=''>Selecione uma UF</option>");
 
             $.each(test, function (i, item) {
-                $("#ufAluno").append("<option id=" + item.id + " nome=" + item.nome + " uf=" + item.uf + " regiao=" + item.regiao + ">" + item.uf + "</option>")
+                $("#ufAluno").append("<option value=" + item.id + " nome=" + item.nome + " uf=" + item.uf + " regiao=" + item.regiao + ">" + item.uf + "</option>")
             });
         }
     });
@@ -201,7 +219,7 @@ function carregaUfs() {
 
 function carregaCidades() {
 
-    var idEstado = $("#ufAluno option:selected").attr("id");
+    var idEstado = $("#ufAluno option:selected").val();
 
     if (idEstado == "" || idEstado == null) {
         $("#cidadeAluno").find('option').remove();
@@ -219,7 +237,7 @@ function carregaCidades() {
                 $("#cidadeAluno").append("<option value=''>Selecione um item</option>");
 
                 $.each(test, function (i, item) {
-                    $("#cidadeAluno").append("<option id=" + item.id + " nome=" + item.nome + ">" + item.nome + "</option>");
+                    $("#cidadeAluno").append("<option value=" + item.id + " nome=" + item.nome + ">" + item.nome + "</option>");
                 });
             }
         });
@@ -239,32 +257,179 @@ function carregaParadas() {
             $("#paradaAluno").append("<option value=''>Selecione um item</option>");
 
             $.each(test, function (i, item) {
-                $("#paradaAluno").append("<option id=" + item.id + " descricao=" + item.descricao + ">" + item.descricao + "</option>");
+                $("#paradaAluno").append("<option value=" + item.id + " descricao=" + item.descricao + ">" + item.descricao + "</option>");
             });
-
-
         }
     });
 }
 
 function validaCadastro() {
-    var rgAluno = $("#rgAluno").val();
+
+    $("#rgAluno").removeClass("nao-preenchido");
+    $("#nomeAluno").removeClass("nao-preenchido");
+    $("#cpfAluno").removeClass("nao-preenchido");
+    $("#enderecoAluno").removeClass("nao-preenchido");
+    $("#ufAluno").removeClass("nao-preenchido");
+    $("#cidadeAluno").removeClass("nao-preenchido");
+    $("#bairroAluno").removeClass("nao-preenchido");
+    $("#cepAluno").removeClass("nao-preenchido");
+    $("#telefoneAluno").removeClass("nao-preenchido");
+    $("#celularAluno").removeClass("nao-preenchido");
+    $("#emailAluno").removeClass("nao-preenchido");
+    $("#cursoAluno").removeClass("nao-preenchido");
+    $("#semestreAluno").removeClass("nao-preenchido");
+    $("#paradaAluno").removeClass("nao-preenchido");
+    $("#entidadeAluno").removeClass("nao-preenchido");
+    $("#senhaAluno").removeClass("nao-preenchido");
+
+    var rgAluno = $("#rgAluno").val().replace(/[^\d]+/g, '');
+    ;
     var nomeAluno = $("#nomeAluno").val();
-    var cpfAluno = $("#cpfAluno").val();
+    var cpfAluno = $("#cpfAluno").val().replace(/[^\d]+/g, '');
+    ;
     var enderecoAluno = $("#enderecoAluno").val();
     var ufAluno = $("#ufAluno").val();
     var cidadeAluno = $("#cidadeAluno").val();
     var bairroAluno = $("#bairroAluno").val();
-    var cepAluno = $("#cepAluno").val();
-    var telefoneAluno = $("#telefoneAluno").val();
-    var celularAluno = $("#celularAluno").val();
+    var cepAluno = $("#cepAluno").val().replace(/[^\d]+/g, '');
+    ;
+    var telefoneAluno = $("#telefoneAluno").val().replace(/[^\d]+/g, '');
+    ;
+    var celularAluno = $("#celularAluno").val().replace(/[^\d]+/g, '');
+    ;
     var emailAluno = $("#emailAluno").val();
     var cursoAluno = $("#cursoAluno").val();
     var semestreAluno = $("#semestreAluno").val();
     var paradaAluno = $("#paradaAluno").val();
     var entidadeAluno = $("#entidadeAluno").val();
-    
-    
+    var senhaAluno = $("#senhaAluno").val();
+
+    if (rgAluno == null || rgAluno == "" ||
+            nomeAluno == null || nomeAluno == "" ||
+            cpfAluno == null || cpfAluno == "" ||
+            enderecoAluno == null || enderecoAluno == "" ||
+            ufAluno == null || ufAluno == "" ||
+            cidadeAluno == null || cidadeAluno == "" ||
+            bairroAluno == null || bairroAluno == "" ||
+            cepAluno == null || cepAluno == "" ||
+            telefoneAluno == null || telefoneAluno == "" ||
+            celularAluno == null || celularAluno == "" ||
+            emailAluno == null || emailAluno == "" ||
+            cursoAluno == null || cursoAluno == "" ||
+            semestreAluno == null || semestreAluno == "" ||
+            paradaAluno == null || paradaAluno == "" ||
+            entidadeAluno == null || entidadeAluno == "" ||
+            senhaAluno == null || senhaAluno == "") {
+
+        if (rgAluno == null || rgAluno == "") {
+            $("#rgAluno").addClass("nao-preenchido");
+        }
+
+        if (nomeAluno == null || nomeAluno == "") {
+            $("#nomeAluno").addClass("nao-preenchido");
+        }
+
+        if (cpfAluno == null || cpfAluno == "") {
+            $("#cpfAluno").addClass("nao-preenchido");
+        }
+
+        if (enderecoAluno == null || enderecoAluno == "") {
+            $("#enderecoAluno").addClass("nao-preenchido");
+        }
+
+        if (ufAluno == null || ufAluno == "") {
+            $("#ufAluno").addClass("nao-preenchido");
+        }
+
+        if (cidadeAluno == null || cidadeAluno == "") {
+            $("#cidadeAluno").addClass("nao-preenchido");
+        }
+
+        if (bairroAluno == null || bairroAluno == "") {
+            $("#bairroAluno").addClass("nao-preenchido");
+        }
+
+        if (cepAluno == null || cepAluno == "") {
+            $("#cepAluno").addClass("nao-preenchido");
+        }
+
+        if (telefoneAluno == null || telefoneAluno == "") {
+            $("#telefoneAluno").addClass("nao-preenchido");
+        }
+
+        if (celularAluno == null || celularAluno == "") {
+            $("#celularAluno").addClass("nao-preenchido");
+        }
+
+        if (emailAluno == null || emailAluno == "") {
+            $("#emailAluno").addClass("nao-preenchido");
+        }
+
+        if (cursoAluno == null || cursoAluno == "") {
+            $("#cursoAluno").addClass("nao-preenchido");
+        }
+
+        if (semestreAluno == null || semestreAluno == "") {
+            $("#semestreAluno").addClass("nao-preenchido");
+        }
+
+        if (paradaAluno == null || paradaAluno == "") {
+            $("#paradaAluno").addClass("nao-preenchido");
+        }
+
+        if (entidadeAluno == null || entidadeAluno == "") {
+            $("#entidadeAluno").addClass("nao-preenchido");
+        }
+
+        if (senhaAluno == null || senhaAluno == "") {
+            $("#senhaAluno").addClass("nao-preenchido");
+        }
+
+    } else {
+
+        $.ajax({
+            type: "POST",
+            url: 'funcoes/funcoesIndex.php',
+            data: {funcao: "cadastraAssociado", entidadeAluno: entidadeAluno, paradaAluno: paradaAluno,
+                semestreAluno: semestreAluno, cursoAluno: cursoAluno, emailAluno: emailAluno, celularAluno: celularAluno,
+                telefoneAluno: telefoneAluno, cepAluno: cepAluno, bairroAluno: bairroAluno, cidadeAluno: cidadeAluno,
+                ufAluno: ufAluno, enderecoAluno: enderecoAluno, cpfAluno: cpfAluno, nomeAluno: nomeAluno, rgAluno: rgAluno},
+            success: function (html) {
+                var test = $.trim(html);
+
+                if (test == "OK") {
+
+                    swal({
+                        title: "Tudo certo!",
+                        text: "Seu cadastro foi realizado com sucesso.",
+                        type: "success"
+                    });
+
+                    $("#modalCadastro").modal('hide');
+                } else {
+                    swal("Opa", "Ocorreu algum problema no seu cadastro, tente novamente mais tarde.", "error");
+                    $("#modalCadastro").modal('hide');
+                }
+
+            }
+        });
+
+    }
 }
+
+function verificaSenha(){
+    var senha = $("#senhaAluno").val();
+    
+    if(senha.length >= 8){
+        $("#8caracteres").text("OK");
+    }else{
+        $("#8caracteres").text("ERRO");
+    }
+    
+    for(var i=0; i<senha.length; i++){
+        if( senha[0])
+    }
+}
+
 
 
