@@ -4,6 +4,8 @@ $(document).ready(function () {
     $("#telefoneAluno").mask("(00) 0000-0000");
     $("#rgAluno").mask("0000000000");
     $("#cepAluno").mask("00000-000");
+    
+    $("#btnCadastro").attr("disabled", "disabled");
 
     var SPMaskBehavior = function (val) {
         return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
@@ -35,15 +37,39 @@ $(document).ready(function () {
         $("#semestreAluno").val("");
         $("#paradaAluno").val("");
         $("#entidadeAluno").val("");
+        $("#senhaAluno").val("");
         $("#cpfAluno").removeAttr("disabled");
 
         $("#cidadeAluno").find('option').remove();
         $("#cidadeAluno").append("<option value=''>Selecione uma UF</option>");
 
+        $("#rgAluno").removeClass("nao-preenchido");
+        $("#nomeAluno").removeClass("nao-preenchido");
+        $("#cpfAluno").removeClass("nao-preenchido");
+        $("#enderecoAluno").removeClass("nao-preenchido");
+        $("#ufAluno").removeClass("nao-preenchido");
+        $("#cidadeAluno").removeClass("nao-preenchido");
+        $("#bairroAluno").removeClass("nao-preenchido");
+        $("#cepAluno").removeClass("nao-preenchido");
+        $("#telefoneAluno").removeClass("nao-preenchido");
+        $("#celularAluno").removeClass("nao-preenchido");
+        $("#emailAluno").removeClass("nao-preenchido");
+        $("#cursoAluno").removeClass("nao-preenchido");
+        $("#semestreAluno").removeClass("nao-preenchido");
+        $("#paradaAluno").removeClass("nao-preenchido");
+        $("#entidadeAluno").removeClass("nao-preenchido");
+        $("#senhaAluno").removeClass("nao-preenchido");
+
         carregaEntidades();
         carregaSemestres();
         carregaUfs();
-        carregaParadas();
+        carregaParadas
+        
+        $("#numeros").html("<img src='images/error.png'/>");
+        $("#letras").html("<img src='images/error.png'/>");
+        $("#8caracteres").html("<img src='images/error.png'/>");
+
+        $("#btnCadastro").attr("disabled", "disabled");
 
     });
 
@@ -152,7 +178,7 @@ function carregaEntidades() {
             $("#entidadeAluno").append("<option value=''>Selecione um item</option>");
 
             $.each(test, function (i, item) {
-                $("#entidadeAluno").append("<option id=" + item.id + " campus=" + item.campus + " nome=" + item.nome + ">" + item.nome + " - " + item.campus + "</option>")
+                $("#entidadeAluno").append("<option value=" + item.id + " campus=" + item.campus + " nome=" + item.nome + ">" + item.nome + " - " + item.campus + "</option>")
             });
 
 
@@ -173,7 +199,7 @@ function carregaSemestres() {
             $("#semestreAluno").append("<option value=''>Selecione um item</option>");
 
             $.each(test, function (i, item) {
-                $("#semestreAluno").append("<option id=" + item.id + " descricao=" + item.descricao + ">" + item.descricao + "</option>")
+                $("#semestreAluno").append("<option value=" + item.id + " descricao=" + item.descricao + ">" + item.descricao + "</option>")
             });
 
 
@@ -193,7 +219,7 @@ function carregaUfs() {
             $("#ufAluno").append("<option value=''>Selecione uma UF</option>");
 
             $.each(test, function (i, item) {
-                $("#ufAluno").append("<option id=" + item.id + " nome=" + item.nome + " uf=" + item.uf + " regiao=" + item.regiao + ">" + item.uf + "</option>")
+                $("#ufAluno").append("<option value=" + item.id + " nome=" + item.nome + " uf=" + item.uf + " regiao=" + item.regiao + ">" + item.uf + "</option>")
             });
         }
     });
@@ -201,7 +227,7 @@ function carregaUfs() {
 
 function carregaCidades() {
 
-    var idEstado = $("#ufAluno option:selected").attr("id");
+    var idEstado = $("#ufAluno option:selected").val();
 
     if (idEstado == "" || idEstado == null) {
         $("#cidadeAluno").find('option').remove();
@@ -219,7 +245,7 @@ function carregaCidades() {
                 $("#cidadeAluno").append("<option value=''>Selecione um item</option>");
 
                 $.each(test, function (i, item) {
-                    $("#cidadeAluno").append("<option id=" + item.id + " nome=" + item.nome + ">" + item.nome + "</option>");
+                    $("#cidadeAluno").append("<option value=" + item.id + " nome=" + item.nome + ">" + item.nome + "</option>");
                 });
             }
         });
@@ -239,32 +265,210 @@ function carregaParadas() {
             $("#paradaAluno").append("<option value=''>Selecione um item</option>");
 
             $.each(test, function (i, item) {
-                $("#paradaAluno").append("<option id=" + item.id + " descricao=" + item.descricao + ">" + item.descricao + "</option>");
+                $("#paradaAluno").append("<option value=" + item.id + " descricao=" + item.descricao + ">" + item.descricao + "</option>");
             });
-
-
         }
     });
 }
 
 function validaCadastro() {
-    var rgAluno = $("#rgAluno").val();
+
+    $("#rgAluno").removeClass("nao-preenchido");
+    $("#nomeAluno").removeClass("nao-preenchido");
+    $("#cpfAluno").removeClass("nao-preenchido");
+    $("#enderecoAluno").removeClass("nao-preenchido");
+    $("#ufAluno").removeClass("nao-preenchido");
+    $("#cidadeAluno").removeClass("nao-preenchido");
+    $("#bairroAluno").removeClass("nao-preenchido");
+    $("#cepAluno").removeClass("nao-preenchido");
+    $("#telefoneAluno").removeClass("nao-preenchido");
+    $("#celularAluno").removeClass("nao-preenchido");
+    $("#emailAluno").removeClass("nao-preenchido");
+    $("#cursoAluno").removeClass("nao-preenchido");
+    $("#semestreAluno").removeClass("nao-preenchido");
+    $("#paradaAluno").removeClass("nao-preenchido");
+    $("#entidadeAluno").removeClass("nao-preenchido");
+    $("#senhaAluno").removeClass("nao-preenchido");
+
+    var rgAluno = $("#rgAluno").val().replace(/[^\d]+/g, '');
+    ;
     var nomeAluno = $("#nomeAluno").val();
-    var cpfAluno = $("#cpfAluno").val();
+    var cpfAluno = $("#cpfAluno").val().replace(/[^\d]+/g, '');
+    ;
     var enderecoAluno = $("#enderecoAluno").val();
     var ufAluno = $("#ufAluno").val();
     var cidadeAluno = $("#cidadeAluno").val();
     var bairroAluno = $("#bairroAluno").val();
-    var cepAluno = $("#cepAluno").val();
-    var telefoneAluno = $("#telefoneAluno").val();
-    var celularAluno = $("#celularAluno").val();
+    var cepAluno = $("#cepAluno").val().replace(/[^\d]+/g, '');
+    ;
+    var telefoneAluno = $("#telefoneAluno").val().replace(/[^\d]+/g, '');
+    ;
+    var celularAluno = $("#celularAluno").val().replace(/[^\d]+/g, '');
+    ;
     var emailAluno = $("#emailAluno").val();
     var cursoAluno = $("#cursoAluno").val();
     var semestreAluno = $("#semestreAluno").val();
     var paradaAluno = $("#paradaAluno").val();
     var entidadeAluno = $("#entidadeAluno").val();
-    
-    
+    var senhaAluno = $("#senhaAluno").val();
+
+    if (rgAluno == null || rgAluno == "" ||
+            nomeAluno == null || nomeAluno == "" ||
+            cpfAluno == null || cpfAluno == "" ||
+            enderecoAluno == null || enderecoAluno == "" ||
+            ufAluno == null || ufAluno == "" ||
+            cidadeAluno == null || cidadeAluno == "" ||
+            bairroAluno == null || bairroAluno == "" ||
+            cepAluno == null || cepAluno == "" ||
+            telefoneAluno == null || telefoneAluno == "" ||
+            celularAluno == null || celularAluno == "" ||
+            emailAluno == null || emailAluno == "" ||
+            cursoAluno == null || cursoAluno == "" ||
+            semestreAluno == null || semestreAluno == "" ||
+            paradaAluno == null || paradaAluno == "" ||
+            entidadeAluno == null || entidadeAluno == "" ||
+            senhaAluno == null || senhaAluno == "") {
+
+        if (rgAluno == null || rgAluno == "") {
+            $("#rgAluno").addClass("nao-preenchido");
+        }
+
+        if (nomeAluno == null || nomeAluno == "") {
+            $("#nomeAluno").addClass("nao-preenchido");
+        }
+
+        if (cpfAluno == null || cpfAluno == "") {
+            $("#cpfAluno").addClass("nao-preenchido");
+        }
+
+        if (enderecoAluno == null || enderecoAluno == "") {
+            $("#enderecoAluno").addClass("nao-preenchido");
+        }
+
+        if (ufAluno == null || ufAluno == "") {
+            $("#ufAluno").addClass("nao-preenchido");
+        }
+
+        if (cidadeAluno == null || cidadeAluno == "") {
+            $("#cidadeAluno").addClass("nao-preenchido");
+        }
+
+        if (bairroAluno == null || bairroAluno == "") {
+            $("#bairroAluno").addClass("nao-preenchido");
+        }
+
+        if (cepAluno == null || cepAluno == "") {
+            $("#cepAluno").addClass("nao-preenchido");
+        }
+
+        if (telefoneAluno == null || telefoneAluno == "") {
+            $("#telefoneAluno").addClass("nao-preenchido");
+        }
+
+        if (celularAluno == null || celularAluno == "") {
+            $("#celularAluno").addClass("nao-preenchido");
+        }
+
+        if (emailAluno == null || emailAluno == "") {
+            $("#emailAluno").addClass("nao-preenchido");
+        }
+
+        if (cursoAluno == null || cursoAluno == "") {
+            $("#cursoAluno").addClass("nao-preenchido");
+        }
+
+        if (semestreAluno == null || semestreAluno == "") {
+            $("#semestreAluno").addClass("nao-preenchido");
+        }
+
+        if (paradaAluno == null || paradaAluno == "") {
+            $("#paradaAluno").addClass("nao-preenchido");
+        }
+
+        if (entidadeAluno == null || entidadeAluno == "") {
+            $("#entidadeAluno").addClass("nao-preenchido");
+        }
+
+        if (senhaAluno == null || senhaAluno == "") {
+            $("#senhaAluno").addClass("nao-preenchido");
+        }
+
+    } else {
+
+        $.ajax({
+            type: "POST",
+            url: 'funcoes/funcoesIndex.php',
+            data: {funcao: "cadastraAssociado", entidadeAluno: entidadeAluno, paradaAluno: paradaAluno,
+                semestreAluno: semestreAluno, cursoAluno: cursoAluno, emailAluno: emailAluno, celularAluno: celularAluno,
+                telefoneAluno: telefoneAluno, cepAluno: cepAluno, bairroAluno: bairroAluno, cidadeAluno: cidadeAluno,
+                ufAluno: ufAluno, enderecoAluno: enderecoAluno, cpfAluno: cpfAluno, nomeAluno: nomeAluno, rgAluno: rgAluno, senhaAluno: senhaAluno},
+            success: function (html) {
+                var test = $.trim(html);
+
+                if (test == "OK") {
+                    swal({
+                        title: "Tudo certo!",
+                        text: "Seu cadastro foi realizado com sucesso.",
+                        type: "success",
+                        showCancelButton: false,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "OK",
+                        closeOnConfirm: false
+                    },
+                            function () {
+                                swal("Dados de Acesso", "Assim que seu cadastro for aprovado pela Associação, você receberá um e-mail contendo informações sobre o acesso ao sistema da associação.", "info");
+                            });
+
+                    $("#modalCadastro").modal('hide');
+                } else {
+                    swal("Opa", "Ocorreu algum problema no seu cadastro, tente novamente mais tarde.", "error");
+                    $("#modalCadastro").modal('hide');
+                }
+
+            }
+        });
+
+    }
 }
+
+function verificaSenha() {
+    var senha = $("#senhaAluno").val();
+
+    var numeros = false;
+    var letras = false;
+    var caracteres = false;
+
+    if (senha.length >= 8) {
+        $("#8caracteres").html("<img src='images/success.png'/>");
+        caracteres = true;
+    } else {
+        $("#8caracteres").html("<img src='images/error.png'/>");
+        caracteres = false;
+    }
+
+    if (senha.match(/[a-z]+/)) {
+        $("#letras").html("<img src='images/success.png'/>");
+        letras = true;
+    } else {
+        $("#letras").html("<img src='images/error.png'/>");
+        letras = false
+    }
+
+    if (senha.match(/[0-9]+/)) {
+        $("#numeros").html("<img src='images/success.png'/>");
+        numeros = true;
+    } else {
+        $("#numeros").html("<img src='images/error.png'/>");
+        numeros = false;
+    }
+    
+    if(numeros == true && caracteres == true && letras == true){
+        $("#btnCadastro").removeAttr("disabled");
+    }else{
+        $("#btnCadastro").attr("disabled", "disabled");
+    }
+
+}
+
 
 

@@ -52,10 +52,10 @@ and open the template in the editor.
                                         <div class="or or-lg"></div>
                                         <button onclick="abreModalCadastro()" type="button" class="btn btn-success btn-lg">Cadastrar</button>
                                     </div>
-                                    
+
 
                                 </fieldset>
-                                
+
                             </form>
                             <br>
                             <p align="center">Um produto <a href="http://www.whdev.com.br"><img src="images/logo.png" width="20%"/></a></p>
@@ -107,14 +107,14 @@ and open the template in the editor.
                                     <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
                                         <label>UF</label>
                                         <select class="input-md form-control" id="ufAluno" onchange="carregaCidades()">
-                                            <option value="Selecione uma UF" >Selecione uma UF</option>
+                                            <option value="" >Selecione uma UF</option>
                                         </select>
                                     </div>
 
                                     <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
                                         <label>Cidade</label>
                                         <select class="input-md form-control" id="cidadeAluno">
-                                            <option value="Selecione uma UF" >Selecione uma UF</option>
+                                            <option value="" >Selecione uma UF</option>
                                         </select>
                                     </div>
                                 </div>
@@ -179,8 +179,18 @@ and open the template in the editor.
                                     </div>
                                 </div>
 
-                                <input type="button" value="Cadastrar" onclick="validaCadastro()" class="btn btn-primary pull-right">
-                                
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                        <label>Senha de Acesso</label>
+                                        <input type="password" id="senhaAluno" class="form-control input-md" onkeyup="verificaSenha()" class="span3">
+                                        <span id="8caracteres"><img src="images/error.png"/></span>   Senha deve possuir pelo menos 8 caracteres<br/>
+                                        <span id="letras"><img src="images/error.png"/></span>   Senha deve possuir letras<br/>
+                                        <span id="numeros"><img src="images/error.png"/></span>   Senha deve possuir números
+                                    </div>
+                                </div>
+
+                                <input type="button" id="btnCadastro" value="Cadastrar" onclick="validaCadastro()" class="btn btn-primary pull-right">
+
                                 <div class="clearfix"></div>
 
 
