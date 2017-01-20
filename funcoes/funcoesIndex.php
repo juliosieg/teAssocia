@@ -1,13 +1,136 @@
 <?php
 
 $funcao = $_POST['funcao'];
-
 if (isset($_POST['idEstado'])) {
     $idEstado = $_POST['idEstado'];
 }
 
 if (isset($_POST['consultaCpf'])) {
     $consultaCpf = $_POST['consultaCpf'];
+}
+
+if (isset($_POST['zonaEleitoralAluno'])) {
+    $zonaEleitoralAluno = $_POST['zonaEleitoralAluno'];
+}
+
+if (isset($_POST['tituloEleitoralAluno'])) {
+    $tituloEleitoralAluno = $_POST['tituloEleitoralAluno'];
+}
+
+if (isset($_POST['secaoEleitoralAluno'])) {
+    $secaoEleitoralAluno = $_POST['secaoEleitoralAluno'];
+}
+
+if (isset($_POST['dataNascimentoAluno'])) {
+    $dataNascimentoAluno = $_POST['dataNascimentoAluno'];
+}
+
+if (isset($_POST['melhorDiaPagamento'])) {
+    $melhorDiaPagamento = $_POST['melhorDiaPagamento'];
+}
+
+if (isset($_POST['matriculaAluno'])) {
+    $matriculaAluno = $_POST['matriculaAluno'];
+}
+
+if (isset($_POST['tipoSanguineoAluno'])) {
+    $tipoSanguineoAluno = $_POST['tipoSanguineoAluno'];
+}
+
+if (isset($_POST['segMar'])) {
+    $segMar = $_POST['segMar'];
+}
+
+if (isset($_POST['terMar'])) {
+    $terMar = $_POST['terMar'];
+}
+
+if (isset($_POST['quaMar'])) {
+    $quaMar = $_POST['quaMar'];
+}
+
+if (isset($_POST['quiMar'])) {
+    $quiMar = $_POST['quiMar'];
+}
+
+if (isset($_POST['sexMar'])) {
+    $sexMar = $_POST['sexMar'];
+}
+
+if (isset($_POST['sabMar'])) {
+    $sabMar = $_POST['sabMar'];
+}
+
+if (isset($_POST['segAbr'])) {
+    $segAbr = $_POST['segAbr'];
+}
+
+if (isset($_POST['terAbr'])) {
+    $terAbr = $_POST['terAbr'];
+}
+
+if (isset($_POST['quaAbr'])) {
+    $quaAbr = $_POST['quaAbr'];
+}
+
+if (isset($_POST['quiAbr'])) {
+    $quiAbr = $_POST['quiAbr'];
+}
+
+if (isset($_POST['sexAbr'])) {
+    $sexAbr = $_POST['sexAbr'];
+}
+
+if (isset($_POST['sabAbr'])) {
+    $sabAbr = $_POST['sabAbr'];
+}
+
+if (isset($_POST['segMai'])) {
+    $segMai = $_POST['segMai'];
+}
+
+if (isset($_POST['terMai'])) {
+    $terMai = $_POST['terMai'];
+}
+
+if (isset($_POST['quaMai'])) {
+    $quaMai = $_POST['quaMai'];
+}
+
+if (isset($_POST['quiMai'])) {
+    $quiMai = $_POST['quiMai'];
+}
+
+if (isset($_POST['sexMai'])) {
+    $sexMai = $_POST['sexMai'];
+}
+
+if (isset($_POST['sabMai'])) {
+    $sabMai = $_POST['sabMai'];
+}
+
+if (isset($_POST['segJun'])) {
+    $segJun = $_POST['segJun'];
+}
+
+if (isset($_POST['terJun'])) {
+    $terJun = $_POST['terJun'];
+}
+
+if (isset($_POST['quaJun'])) {
+    $quaJun = $_POST['quaJun'];
+}
+
+if (isset($_POST['quiJun'])) {
+    $quiJun = $_POST['quiJun'];
+}
+
+if (isset($_POST['sexJun'])) {
+    $sexJun = $_POST['sexJun'];
+}
+
+if (isset($_POST['sabJun'])) {
+    $sabJun = $_POST['sabJun'];
 }
 
 if (isset($_POST['entidadeAluno'])) {
@@ -99,7 +222,7 @@ switch ($funcao) {
         consultaCpf($consultaCpf);
         break;
     case "cadastraAssociado":
-        cadastraAssociado($entidadeAluno, $paradaAluno, $semestreAluno, $cursoAluno, $emailAluno, $celularAluno, $telefoneAluno, $cepAluno, $bairroAluno, $cidadeAluno, $ufAluno, $enderecoAluno, $cpfAluno, $nomeAluno, $rgAluno, $senhaAluno);
+        cadastraAssociado($entidadeAluno, $paradaAluno, $semestreAluno, $cursoAluno, $emailAluno, $celularAluno, $telefoneAluno, $cepAluno, $bairroAluno, $cidadeAluno, $ufAluno, $enderecoAluno, $cpfAluno, $nomeAluno, $rgAluno, $senhaAluno, $tituloEleitoralAluno, $dataNascimentoAluno, $zonaEleitoralAluno, $secaoEleitoralAluno, $matriculaAluno, $tipoSanguineoAluno, $melhorDiaPagamento, $segMar, $terMar, $quaMar, $quiMar, $sexMar, $sabMar, $segAbr, $terAbr, $quaAbr, $quiAbr, $sexAbr, $sabAbr, $segMai, $terMai, $quaMai, $quiMai, $sexMai, $sabMai, $segJun, $terJun, $quaJun, $quiJun, $sexJun, $sabJun);
         break;
 }
 
@@ -198,33 +321,59 @@ function consultaCpf($consultaCpf) {
     echo $result;
 }
 
-function cadastraAssociado($entidadeAluno, $paradaAluno, $semestreAluno, $cursoAluno, $emailAluno, 
-        $celularAluno, $telefoneAluno, $cepAluno, $bairroAluno, $cidadeAluno, $ufAluno, 
-        $enderecoAluno, $cpfAluno, $nomeAluno, $rgAluno, $senhaAluno) {
+function cadastraAssociado($entidadeAluno, $paradaAluno, $semestreAluno, $cursoAluno, $emailAluno, $celularAluno, $telefoneAluno, $cepAluno, $bairroAluno, $cidadeAluno, $ufAluno, $enderecoAluno, $cpfAluno, $nomeAluno, $rgAluno, $senhaAluno, $tituloEleitoralAluno, $dataNascimentoAluno, $zonaEleitoralAluno, $secaoEleitoralAluno, $matriculaAluno, $tipoSanguineoAluno, $melhorDiaPagamento, $segMar, $terMar, $quaMar, $quiMar, $sexMar, $sabMar, $segAbr, $terAbr, $quaAbr, $quiAbr, $sexAbr, $sabAbr, $segMai, $terMai, $quaMai, $quiMai, $sexMai, $sabMai, $segJun, $terJun, $quaJun, $quiJun, $sexJun, $sabJun) {
 
     include 'conexao.php';
 
     $conexao = new Conexao();
     $conexao->Conexao();
-    
+
     $senhaComHash = hash("whirlpool", $senhaAluno);
-    
+
+    $pasta_dir = "../docsAssociados/"; //diretorio dos arquivos
+    //se nao existir a pasta ele cria uma
+    if (!file_exists($pasta_dir)) {
+        mkdir($pasta_dir);
+    }
+    $comprovanteMatricula = $_FILES["comprovanteMatricula"];
+    $fototituloeleitor = $_FILES["tituloEleitorFoto"];
+    $fotoAluno = $_FILES["fotoAluno"];
+
+    $extComprovante = pathinfo($comprovanteMatricula['name'], PATHINFO_EXTENSION);
+    $extTituloEleitor = pathinfo($fototituloeleitor['name'], PATHINFO_EXTENSION);
+    $extFoto = pathinfo($fotoAluno['name'], PATHINFO_EXTENSION);
+
+    $nomeComumComprovante = "comprovante" . $cpfAluno . '.' . $extComprovante;
+    $nomeComumTituloEleitor = "tituloEleitor" . $cpfAluno . '.' . $extTituloEleitor;
+    $nomeComumFoto = "foto" . $cpfAluno . '.' . $extFoto;
+
+    $arquivo_nome_comprovante = $pasta_dir . $nomeComumComprovante;
+    $arquivo_nome_titulo = $pasta_dir . $nomeComumTituloEleitor;
+    $arquivo_nome_foto = $pasta_dir . $nomeComumFoto;
+
+//Faz o upload da imagem
+
+    move_uploaded_file($comprovanteMatricula["tmp_name"], $arquivo_nome_comprovante);
+    move_uploaded_file($fototituloeleitor["tmp_name"], $arquivo_nome_titulo);
+    move_uploaded_file($fotoAluno["tmp_name"], $arquivo_nome_foto);
+
     try {
-        $sql = "insert into associado(cpf, rg, nome, endereco, bairro, cep, telefone, celular, email, curso, idsemestre, idparada, identidade, idcidade, idestado, status) "
-                . "values(" . $cpfAluno . "," . $rgAluno . ",'" . $nomeAluno . "','" . $enderecoAluno . "','" . $bairroAluno . "', '" . $cepAluno . "', '" . $telefoneAluno . "', '" . $celularAluno . "', '" . $emailAluno . "', '" . $cursoAluno . "', " . $semestreAluno . ", " . $paradaAluno . ", " . $entidadeAluno . ", " . $cidadeAluno . ", " . $ufAluno . ", 2)";
+        $sql = "insert into associado(cpf, rg, nome, endereco, bairro, cep, telefone, celular, email, curso, idsemestre, idparada, identidade, idcidade, idestado, status, tituloeleitor, dtnascimento, zonaeleitoral, secaoeleitoral, matricula, tiposanguineo, diapagamento, comprovantematricula, fototituloeleitor) "
+                . "values(" . $cpfAluno . "," . $rgAluno . ",'" . $nomeAluno . "','" . $enderecoAluno . "','" . $bairroAluno . "', '" . $cepAluno . "', '" . $telefoneAluno . "', '" . $celularAluno . "', '" . $emailAluno . "', '" . $cursoAluno . "', " . $semestreAluno . ", " . $paradaAluno . ", " . $entidadeAluno . ", " . $cidadeAluno . ", " . $ufAluno . ", 2, '" . $tituloEleitoralAluno . "', '" . $dataNascimentoAluno . "', '" . $zonaEleitoralAluno . "', '" . $secaoEleitoralAluno . "', '" . $matriculaAluno . "', '" . $tipoSanguineoAluno . "', '" . $melhorDiaPagamento . "', '" . $arquivo_nome_comprovante . "', '" . $arquivo_nome_titulo . "')";
         $conexao->Executar($sql);
-    
-        $sql = "select id from associado where cpf = ".$cpfAluno;
+
+        $sql = "select id from associado where cpf = " . $cpfAluno;
         $conexao->Executar($sql);
         $result = $conexao->MontarResultados();
         $id = $result[0]['id'];
-        
-        $sql = "insert into usuario(senha, id_associado) values ('".$senhaComHash."',".$id.")";
-        $conexao->Executar($sql);
-        
-        echo "OK";
 
-        
+        $sql = "insert into usuario(senha, id_associado, imagem_perfil) values ('" . $senhaComHash . "'," . $id . ", '" . $arquivo_nome_foto . "')";
+        $conexao->Executar($sql);
+
+        $sql = "insert into horarios(segmar, termar, quamar, quimar, sexmar, sabmar, segabr, terabr, quaabr, quiabr, sexabr, sababr, segmai, termai, quamai, quimai, sexmai, sabmai, segjun, terjun, quajun, quijun, sexjun, sabjun, id_associado)"
+                . "values (" . $segMar . "," . $terMar . "," . $quaMar . "," . $quiMar . "," . $sexMar . "," . $sabMar . "," . $segAbr . "," . $terAbr . "," . $quaAbr . "," . $quiAbr . "," . $sexAbr . "," . $sabAbr . "," . $segMai . "," . $terMai . "," . $quaMai . "," . $quiMai . "," . $sexMai . "," . $sabMai . "," . $segJun . "," . $terJun . "," . $quaJun . "," . $quiJun . "," . $sexJun . "," . $sabJun . ",$id)";
+        $conexao->Executar($sql);
+        echo "OK";
     } catch (Exception $e) {
         echo $e;
     }
