@@ -52,6 +52,7 @@ $(document).ready(function () {
         $("#paradaAluno").val("");
         $("#entidadeAluno").val("");
         $("#senhaAluno").val("");
+        $("#observacoesAluno").val("");
         $("#comprovanteMatricula").fileinput('clear');
         $("#fotoAluno").fileinput('clear');
         $("#tituloEleitorFoto").fileinput('clear');
@@ -277,6 +278,7 @@ function validaCadastro() {
     var entidadeAluno = $("#entidadeAluno").val();
     var melhorDiaPagamento = $('.btn-group > .btn.active').text();
     var senhaAluno = $("#senhaAluno").val();
+    var observacoesAluno = $("#observacoesAluno").val();
 
     if (nomeAluno == null || nomeAluno == "" ||
             dataNascimentoAluno == null || dataNascimentoAluno == "" ||
@@ -535,6 +537,7 @@ function validaCadastro() {
         fd.append("cepAluno", cepAluno);
         fd.append("bairroAluno", bairroAluno);
         fd.append("cidadeAluno", cidadeAluno);
+        fd.append("observacoesAluno", observacoesAluno);
 
         fd.append("segFev", segFev);
         fd.append("terFev", terFev);

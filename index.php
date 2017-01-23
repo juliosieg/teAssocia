@@ -59,7 +59,7 @@ and open the template in the editor.
 
                                     <div class="ui-group-buttons" style="padding-left: 7%">
                                         <button type="button" class="btn btn-info btn-lg">Login</button>
-                                        
+
                                         <button onclick="abreModalCadastro()" type="button" class="btn btn-success btn-lg">Quero me associar!</button>
                                     </div>
 
@@ -366,6 +366,15 @@ and open the template in the editor.
                                     </div>
                                 </div>
 
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                        <label>Observações</label>
+                                        <textarea id="observacoesAluno" class="form-control input-md" class="span3" rows="5" draggable="false" re>
+                                        </textarea>
+
+                                    </div>
+                                </div>
+
                                 <input type="submit" id="btnCadastro" value="Cadastrar" class="btn btn-primary pull-right">
 
                                 <div class="clearfix"></div>
@@ -401,7 +410,7 @@ and open the template in the editor.
             showPreview: false,
             showRemove: false
         });
-        
+
     </script>
 
     <script>
