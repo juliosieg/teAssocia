@@ -57,10 +57,10 @@ and open the template in the editor.
                                         <input class="form-control" placeholder="Senha" name="password" type="password" value="">
                                     </div>
 
-                                    <div class="ui-group-buttons" style="padding-left: 20%">
-                                        <button type="button" class="btn btn-primary btn-lg">Entrar</button>
-                                        <div class="or or-lg"></div>
-                                        <button onclick="abreModalCadastro()" type="button" class="btn btn-success btn-lg">Cadastrar</button>
+                                    <div class="ui-group-buttons" style="padding-left: 7%">
+                                        <button type="button" class="btn btn-info btn-lg">Login</button>
+                                        
+                                        <button onclick="abreModalCadastro()" type="button" class="btn btn-success btn-lg">Quero me associar!</button>
                                     </div>
 
 
@@ -107,7 +107,7 @@ and open the template in the editor.
                                 <div class="row">
                                     <div class="col-lg-6 col-md-4 col-sm-4" style="padding-bottom: 10px;">
                                         <label>Data de Nascimento</label><span style="color: red">*</span>
-                                        <input id="dtNascimento" type="date" class="form-control input-md" class="span3">
+                                        <input id="dtNascimento" type="text" class="form-control input-md" class="span3">
                                     </div>
                                     <div class="col-lg-6 col-md-4 col-sm-4" style="padding-bottom: 10px;">
                                         <label>RG</label><span style="color: red">*</span>
@@ -125,7 +125,7 @@ and open the template in the editor.
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4" style="padding-bottom: 10px;">
                                         <label>Seção Eleitoral</label><span style="color: red">*</span>
-                                        <input id="secaoEleitoralAluno" type="text" maxlength="12" minlength="12" class="form-control input-md" class="span3">
+                                        <input id="secaoEleitoralAluno" type="text" maxlength="4" minlength="4" class="form-control input-md" class="span3">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -238,9 +238,8 @@ and open the template in the editor.
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <label class="control-label">Melhor Dia para Pagamento</label><span style="color: red">*</span>
                                         <div class="btn-group col-md-12" id="melhorDiaPagamento">
-                                            <button type="button" class="btn btn-primary col-lg-4 col-md-4 col-sm-4">10</button>
-                                            <button type="button" class="btn btn-primary col-lg-4 col-md-4 col-sm-4">20</button>
-                                            <button type="button" class="btn btn-primary col-lg-4 col-md-4 col-sm-4">30</button>
+                                            <button type="button" class="btn btn-primary col-lg-6 col-md-6 col-sm-6">15</button>
+                                            <button type="button" class="btn btn-primary col-lg-6 col-md-6 col-sm-6">20</button>
                                         </div>
                                     </div>
                                 </div>
@@ -257,7 +256,7 @@ and open the template in the editor.
 
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <label class="control-label">Foto</label><span style="color: red">*</span>
+                                        <label class="control-label">Foto</label>
                                         <input id="fotoAluno" name="fotoAluno" type="file" class="file">
                                     </div>
                                 </div>
@@ -299,6 +298,15 @@ and open the template in the editor.
                                             <td><input type="checkbox" id="tdsSab" onclick="tratamentoTodosSabado()"></td>
                                         </tr>
                                         <tr>
+                                            <th>Fevereiro</th>
+                                            <td><input type="checkbox" id="fevSeg"></td>
+                                            <td><input type="checkbox" id="fevTer"></td>
+                                            <td><input type="checkbox" id="fevQua"></td>
+                                            <td><input type="checkbox" id="fevQui"></td>
+                                            <td><input type="checkbox" id="fevSex"></td>
+                                            <td><input type="checkbox" id="fevSab"></td>
+                                        </tr>
+                                        <tr>
                                             <th>Março</th>
                                             <td><input type="checkbox" id="marSeg"></td>
                                             <td><input type="checkbox" id="marTer"></td>
@@ -333,6 +341,15 @@ and open the template in the editor.
                                             <td><input type="checkbox" id="junQui"></td>
                                             <td><input type="checkbox" id="junSex"></td>
                                             <td><input type="checkbox" id="junSab"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Julho</th>
+                                            <td><input type="checkbox" id="julSeg"></td>
+                                            <td><input type="checkbox" id="julTer"></td>
+                                            <td><input type="checkbox" id="julQua"></td>
+                                            <td><input type="checkbox" id="julQui"></td>
+                                            <td><input type="checkbox" id="julSex"></td>
+                                            <td><input type="checkbox" id="julSab"></td>
                                         </tr>
                                     </tbody>
                                 </table>

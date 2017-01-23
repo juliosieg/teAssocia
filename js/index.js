@@ -299,7 +299,6 @@ function validaCadastro() {
             melhorDiaPagamento == null || melhorDiaPagamento == "" ||
             senhaAluno == null || senhaAluno == "" ||
             document.getElementById("comprovanteMatricula").files.length == 0 ||
-            document.getElementById("fotoAluno").files.length == 0 ||
             document.getElementById("tituloEleitorFoto").files.length == 0) {
 
         swal("Opa", "Campos obrigatórios não preenchidos!", "error");
@@ -309,6 +308,42 @@ function validaCadastro() {
     } else {
 
         //Tratamento dos horarios
+        if ($("#fevSeg").is(":checked")) {
+            var segFev = 1;
+        } else {
+            var segFev = 0;
+        }
+
+        if ($("#fevTer").is(":checked")) {
+            var terFev = 1;
+        } else {
+            var terFev = 0;
+        }
+
+
+        if ($("#fevQua").is(":checked")) {
+            var quaFev = 1;
+        } else {
+            var quaFev = 0;
+        }
+
+
+        if ($("#fevQui").is(":checked")) {
+            var quiFev = 1;
+        } else {
+            var quiFev = 0;
+        }
+        if ($("#fevSex").is(":checked")) {
+            var sexFev = 1;
+        } else {
+            var sexFev = 0;
+        }
+        if ($("#fevSab").is(":checked")) {
+            var sabFev = 1;
+        } else {
+            var sabFev = 0;
+        }
+
         if ($("#marSeg").is(":checked")) {
             var segMar = 1;
         } else {
@@ -437,6 +472,42 @@ function validaCadastro() {
         } else {
             var sabJun = 0;
         }
+
+        if ($("#julSeg").is(":checked")) {
+            var segJul = 1;
+        } else {
+            var segJul = 0;
+        }
+
+        if ($("#julTer").is(":checked")) {
+            var terJul = 1;
+        } else {
+            var terJul = 0;
+        }
+
+        if ($("#julQua").is(":checked")) {
+            var quaJul = 1;
+        } else {
+            var quaJul = 0;
+        }
+
+        if ($("#julQui").is(":checked")) {
+            var quiJul = 1;
+        } else {
+            var quiJul = 0;
+        }
+
+        if ($("#julSex").is(":checked")) {
+            var sexJul = 1;
+        } else {
+            var sexJul = 0;
+        }
+
+        if ($("#julSab").is(":checked")) {
+            var sabJul = 1;
+        } else {
+            var sabJul = 0;
+        }
         /***********************************************/
 
         var fd = new FormData(document.getElementById("formAluno"));
@@ -465,6 +536,12 @@ function validaCadastro() {
         fd.append("bairroAluno", bairroAluno);
         fd.append("cidadeAluno", cidadeAluno);
 
+        fd.append("segFev", segFev);
+        fd.append("terFev", terFev);
+        fd.append("quaFev", quaFev);
+        fd.append("quiFev", quiFev);
+        fd.append("sexFev", sexFev);
+        fd.append("sabFev", sabFev);
         fd.append("segMar", segMar);
         fd.append("terMar", terMar);
         fd.append("quaMar", quaMar);
@@ -489,6 +566,12 @@ function validaCadastro() {
         fd.append("quiJun", quiJun);
         fd.append("sexJun", sexJun);
         fd.append("sabJun", sabJun);
+        fd.append("segJul", segJul);
+        fd.append("terJul", terJul);
+        fd.append("quaJul", quaJul);
+        fd.append("quiJul", quiJul);
+        fd.append("sexJul", sexJul);
+        fd.append("sabJul", sabJul);
 
         fd.append('funcao', 'cadastraAssociado');
 
@@ -566,6 +649,8 @@ function verificaSenha() {
 
 function tratamentoTodosSegunda() {
     if ($("#tdsSeg").is(":checked")) {
+        $("#fevSeg").attr("disabled", "disabled");
+        $("#fevSeg").attr("checked", "checked");
         $("#marSeg").attr("disabled", "disabled");
         $("#marSeg").attr("checked", "checked");
         $("#abrSeg").attr("disabled", "disabled");
@@ -574,7 +659,11 @@ function tratamentoTodosSegunda() {
         $("#maiSeg").attr("checked", "checked");
         $("#junSeg").attr("disabled", "disabled");
         $("#junSeg").attr("checked", "checked");
+        $("#julSeg").attr("disabled", "disabled");
+        $("#julSeg").attr("checked", "checked");
     } else {
+        $("#fevSeg").removeAttr("disabled");
+        $("#fevSeg").removeAttr("checked");
         $("#marSeg").removeAttr("disabled");
         $("#marSeg").removeAttr("checked");
         $("#abrSeg").removeAttr("disabled");
@@ -583,11 +672,15 @@ function tratamentoTodosSegunda() {
         $("#maiSeg").removeAttr("checked");
         $("#junSeg").removeAttr("disabled");
         $("#junSeg").removeAttr("checked");
+        $("#julSeg").removeAttr("disabled");
+        $("#julSeg").removeAttr("checked");
     }
 }
 
 function tratamentoTodosTerca() {
     if ($("#tdsTer").is(":checked")) {
+        $("#fevTer").attr("disabled", "disabled");
+        $("#fevTer").attr("checked", "checked");
         $("#marTer").attr("disabled", "disabled");
         $("#marTer").attr("checked", "checked");
         $("#abrTer").attr("disabled", "disabled");
@@ -596,7 +689,11 @@ function tratamentoTodosTerca() {
         $("#maiTer").attr("checked", "checked");
         $("#junTer").attr("disabled", "disabled");
         $("#junTer").attr("checked", "checked");
+        $("#julTer").attr("disabled", "disabled");
+        $("#julTer").attr("checked", "checked");
     } else {
+        $("#fevTer").removeAttr("disabled");
+        $("#fevTer").removeAttr("checked");
         $("#marTer").removeAttr("disabled");
         $("#marTer").removeAttr("checked");
         $("#abrTer").removeAttr("disabled");
@@ -605,11 +702,15 @@ function tratamentoTodosTerca() {
         $("#maiTer").removeAttr("checked");
         $("#junTer").removeAttr("disabled");
         $("#junTer").removeAttr("checked");
+        $("#julTer").removeAttr("disabled");
+        $("#julTer").removeAttr("checked");
     }
 }
 
 function tratamentoTodosQuarta() {
     if ($("#tdsQua").is(":checked")) {
+        $("#fevQua").attr("disabled", "disabled");
+        $("#fevQua").attr("checked", "checked");
         $("#marQua").attr("disabled", "disabled");
         $("#marQua").attr("checked", "checked");
         $("#abrQua").attr("disabled", "disabled");
@@ -618,7 +719,11 @@ function tratamentoTodosQuarta() {
         $("#maiQua").attr("checked", "checked");
         $("#junQua").attr("disabled", "disabled");
         $("#junQua").attr("checked", "checked");
+        $("#julQua").attr("disabled", "disabled");
+        $("#julQua").attr("checked", "checked");
     } else {
+        $("#fevQua").removeAttr("disabled");
+        $("#fevQua").removeAttr("checked");
         $("#marQua").removeAttr("disabled");
         $("#marQua").removeAttr("checked");
         $("#abrQua").removeAttr("disabled");
@@ -627,11 +732,15 @@ function tratamentoTodosQuarta() {
         $("#maiQua").removeAttr("checked");
         $("#junQua").removeAttr("disabled");
         $("#junQua").removeAttr("checked");
+        $("#julQua").removeAttr("disabled");
+        $("#julQua").removeAttr("checked");
     }
 }
 
 function tratamentoTodosQuinta() {
     if ($("#tdsQui").is(":checked")) {
+        $("#fevQui").attr("disabled", "disabled");
+        $("#fevQui").attr("checked", "checked");
         $("#marQui").attr("disabled", "disabled");
         $("#marQui").attr("checked", "checked");
         $("#abrQui").attr("disabled", "disabled");
@@ -640,7 +749,11 @@ function tratamentoTodosQuinta() {
         $("#maiQui").attr("checked", "checked");
         $("#junQui").attr("disabled", "disabled");
         $("#junQui").attr("checked", "checked");
+        $("#julQui").attr("disabled", "disabled");
+        $("#julQui").attr("checked", "checked");
     } else {
+        $("#fevQui").removeAttr("disabled");
+        $("#fevQui").removeAttr("checked");
         $("#marQui").removeAttr("disabled");
         $("#marQui").removeAttr("checked");
         $("#abrQui").removeAttr("disabled");
@@ -649,11 +762,15 @@ function tratamentoTodosQuinta() {
         $("#maiQui").removeAttr("checked");
         $("#junQui").removeAttr("disabled");
         $("#junQui").removeAttr("checked");
+        $("#julQui").removeAttr("disabled");
+        $("#julQui").removeAttr("checked");
     }
 }
 
 function tratamentoTodosSexta() {
     if ($("#tdsSex").is(":checked")) {
+        $("#fevSex").attr("disabled", "disabled");
+        $("#fevSex").attr("checked", "checked");
         $("#marSex").attr("disabled", "disabled");
         $("#marSex").attr("checked", "checked");
         $("#abrSex").attr("disabled", "disabled");
@@ -662,7 +779,11 @@ function tratamentoTodosSexta() {
         $("#maiSex").attr("checked", "checked");
         $("#junSex").attr("disabled", "disabled");
         $("#junSex").attr("checked", "checked");
+        $("#julSex").attr("disabled", "disabled");
+        $("#julSex").attr("checked", "checked");
     } else {
+        $("#fevSex").removeAttr("disabled");
+        $("#fevSex").removeAttr("checked");
         $("#marSex").removeAttr("disabled");
         $("#marSex").removeAttr("checked");
         $("#abrSex").removeAttr("disabled");
@@ -671,11 +792,15 @@ function tratamentoTodosSexta() {
         $("#maiSex").removeAttr("checked");
         $("#junSex").removeAttr("disabled");
         $("#junSex").removeAttr("checked");
+        $("#julSex").removeAttr("disabled");
+        $("#julSex").removeAttr("checked");
     }
 }
 
 function tratamentoTodosSabado() {
     if ($("#tdsSab").is(":checked")) {
+        $("#fevSab").attr("disabled", "disabled");
+        $("#fevSab").attr("checked", "checked");
         $("#marSab").attr("disabled", "disabled");
         $("#marSab").attr("checked", "checked");
         $("#abrSab").attr("disabled", "disabled");
@@ -684,7 +809,11 @@ function tratamentoTodosSabado() {
         $("#maiSab").attr("checked", "checked");
         $("#junSab").attr("disabled", "disabled");
         $("#junSab").attr("checked", "checked");
+        $("#julSab").attr("disabled", "disabled");
+        $("#julSab").attr("checked", "checked");
     } else {
+        $("#fevSab").removeAttr("disabled");
+        $("#fevSab").removeAttr("checked");
         $("#marSab").removeAttr("disabled");
         $("#marSab").removeAttr("checked");
         $("#abrSab").removeAttr("disabled");
@@ -693,6 +822,8 @@ function tratamentoTodosSabado() {
         $("#maiSab").removeAttr("checked");
         $("#junSab").removeAttr("disabled");
         $("#junSab").removeAttr("checked");
+        $("#julSab").removeAttr("disabled");
+        $("#julSab").removeAttr("checked");
     }
 }
 

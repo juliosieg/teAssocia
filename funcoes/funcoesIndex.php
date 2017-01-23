@@ -37,6 +37,30 @@ if (isset($_POST['tipoSanguineoAluno'])) {
     $tipoSanguineoAluno = $_POST['tipoSanguineoAluno'];
 }
 
+if (isset($_POST['segFev'])) {
+    $segFev = $_POST['segFev'];
+}
+
+if (isset($_POST['terFev'])) {
+    $terFev = $_POST['terFev'];
+}
+
+if (isset($_POST['quaFev'])) {
+    $quaFev = $_POST['quaFev'];
+}
+
+if (isset($_POST['quiFev'])) {
+    $quiFev = $_POST['quiFev'];
+}
+
+if (isset($_POST['sexFev'])) {
+    $sexFev = $_POST['sexFev'];
+}
+
+if (isset($_POST['sabFev'])) {
+    $sabFev = $_POST['sabFev'];
+}
+
 if (isset($_POST['segMar'])) {
     $segMar = $_POST['segMar'];
 }
@@ -131,6 +155,30 @@ if (isset($_POST['sexJun'])) {
 
 if (isset($_POST['sabJun'])) {
     $sabJun = $_POST['sabJun'];
+}
+
+if (isset($_POST['segJul'])) {
+    $segJul = $_POST['segJul'];
+}
+
+if (isset($_POST['terJul'])) {
+    $terJul = $_POST['terJul'];
+}
+
+if (isset($_POST['quaJul'])) {
+    $quaJul = $_POST['quaJul'];
+}
+
+if (isset($_POST['quiJul'])) {
+    $quiJul = $_POST['quiJul'];
+}
+
+if (isset($_POST['sexJul'])) {
+    $sexJul = $_POST['sexJul'];
+}
+
+if (isset($_POST['sabJul'])) {
+    $sabJul = $_POST['sabJul'];
 }
 
 if (isset($_POST['entidadeAluno'])) {
