@@ -419,7 +419,8 @@ function cadastraAssociado($entidadeAluno, $paradaAluno, $semestreAluno, $cursoA
         $result = $conexao->MontarResultados();
         $id = $result[0]['id'];
 
-        $sql = "insert into usuario(senha, id_associado, imagem_perfil) values ('" . $senhaComHash . "'," . $id . ", '" . $arquivo_nome_foto . "')";
+        $sql = "insert into usuario(senha, id_associado, email, imagem_perfil, perfil) values ('" . $senhaComHash . "'," . $id . ",'".$emailAluno."', '" . $arquivo_nome_foto . "', 1)";
+        //No perfil insere 1 pra aluno e 2 pra diretoria
         $conexao->Executar($sql);
 
         $sql = "insert into horarios(segfev, terfev, quafev, quifev, sexfev, sabfev, segmar, termar, quamar, quimar, sexmar, sabmar, segabr, terabr, quaabr, quiabr, sexabr, sababr, segmai, termai, quamai, quimai, sexmai, sabmai, segjun, terjun, quajun, quijun, sexjun, sabjun, segjul, terjul, quajul, quijul, sexjul, sabjul, id_associado)"

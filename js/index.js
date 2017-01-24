@@ -830,4 +830,41 @@ function tratamentoTodosSabado() {
     }
 }
 
+function efetuarLogin() {
+
+    var email = $("#emailLogin").val();
+    var senha = $("#senhaLogin").val();
+
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        url: 'funcoes/efetuarLogin.php',
+        data: {email: email, senha: senha},
+        success: function (data) {
+            $.each(data, function (key, value)
+            {
+
+                if (value['ret'] == true) {
+                    var perfil = value['perfil'];
+
+                    //Testa se o perfil é diretoria ou aluno
+                    if (perfil == '1') {
+
+                        window.location.replace("aluno/index.php");
+
+                    } else if (perfil == '2') {
+
+                        window.location.replace("diretoria/index.php");
+
+                    }
+
+
+                } else {
+                    swal("Erro", value['msg'], 'error');
+                }
+            });
+        }
+    });
+}
+
 

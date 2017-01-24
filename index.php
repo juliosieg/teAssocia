@@ -51,14 +51,14 @@ and open the template in the editor.
 
                                 <fieldset>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="E-mail" name="email" type="text">
+                                        <input class="form-control" id="emailLogin" placeholder="E-mail" name="email" type="text">
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Senha" name="password" type="password" value="">
+                                        <input class="form-control" id="senhaLogin" placeholder="Senha" name="password" type="password" value="">
                                     </div>
 
                                     <div class="ui-group-buttons" style="padding-left: 7%">
-                                        <button type="button" class="btn btn-info btn-lg">Login</button>
+                                        <button type="button"  onclick="efetuarLogin()" class="btn btn-info btn-lg">Login</button>
 
                                         <button onclick="abreModalCadastro()" type="button" class="btn btn-success btn-lg">Quero me associar!</button>
                                     </div>
@@ -231,6 +231,8 @@ and open the template in the editor.
                                         <select class="input-md form-control" id="entidadeAluno">
                                             <option value="Selecione um Item" >Selecione um Item</option>
                                         </select>
+                                        <span style="color: red; font-size: 12px">O Ônibus passa apenas pela Avenida Brasil</span>
+                                        <br/><span style="color: red; font-size: 12px">Para opção 'Outros', informe a entidade no campo de Observações</span>
                                     </div>
                                 </div>
 
