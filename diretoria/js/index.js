@@ -7,6 +7,10 @@ $(document).ready(function () {
     preencheGrafico1();
 
     preencheGrafico2();
+    
+    $('[data-toggle="tooltip"]').tooltip({
+        container: 'body'
+    });
 
 });
 

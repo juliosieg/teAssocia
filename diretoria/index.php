@@ -6,6 +6,15 @@
 
         <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
 
+        <style>
+
+            .desabilitada{
+                pointer-events: none;
+                opacity:0.4;
+            }
+
+        </style>
+
         <!--Font Awesome -->
         <link rel = "stylesheet" href = "../adminLte/plugins/font-awesome-4.6.3/css/font-awesome.css">
         <!--Ionicons -->
@@ -102,12 +111,14 @@
                             </a>
                         </li>
 
-                        <li>
-                            <a href="../admin/listarTipos.php">
+
+                        <li data-toggle="tooltip" data-placement="right" title="Função desabilitada. Em breve será liberada">
+                            <a href="../admin/listarTipos.php" class="desabilitada">
                                 <i class="fa fa-info"></i>
                                 <span>Dados da Associação</span>
                             </a>
                         </li>
+
 
                         <li class="treeview">
                             <a>
@@ -116,7 +127,7 @@
                                 <i class="ion-ios-arrow-down pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-navicon"></i> Listar</a></li>
+                                <li><a href="listarAssociados.php"><i class="fa fa-navicon"></i> Listar</a></li>
                                 <li><a href="listaPendentesAprovacao.php"><i class="fa fa-ban"></i> Pendentes de Aprovação</a></li>
                             </ul>
                         </li>
@@ -128,9 +139,15 @@
                                 <i class="ion-ios-arrow-down pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-flag"></i> Paradas</a></li>
-                                <li><a href="#"><i class="fa fa-graduation-cap"></i> Entidades</a></li>
-                                <li><a href="#"><i class="fa fa-book"></i> Semestres</a></li>
+                                <li data-toggle="tooltip" data-placement="right" title="Função desabilitada. Em breve será liberada">
+                                    <a href="../admin/listarTipos.php" class="desabilitada"><i class="fa fa-flag"></i> Paradas</a>
+                                </li>
+                                <li data-toggle="tooltip" data-placement="right" title="Função desabilitada. Em breve será liberada">
+                                    <a href="../admin/listarTipos.php" class="desabilitada"><i class="fa fa-graduation-cap"></i> Entidades</a>
+                                </li>
+                                <li data-toggle="tooltip" data-placement="right" title="Função desabilitada. Em breve será liberada">
+                                    <a href="../admin/listarTipos.php" class="desabilitada"><i class="fa fa-book"></i> Semestres</a>
+                                </li>
                             </ul>
                         </li>
 

@@ -5884,6 +5884,9 @@ button.close {
   -webkit-overflow-scrolling: touch;
   outline: 0;
 }
+.modal-wide .modal-dialog {
+  width: 70%; /* or whatever you wish */
+}
 .modal.fade .modal-dialog {
   -webkit-transition: -webkit-transform .3s ease-out;
        -o-transition:      -o-transform .3s ease-out;
