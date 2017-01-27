@@ -203,7 +203,7 @@
                                 <div class="box-header with-border">
                                     <i class="fa fa-bar-chart-o"></i>
 
-                                    <h3 class="box-title">Cadastrados x Pendentes de Aprovação</h3>
+                                    <h3 class="box-title">Aprovados x Pendentes de Aprovação</h3>
 
                                 </div>
                                 <div class="box-body">

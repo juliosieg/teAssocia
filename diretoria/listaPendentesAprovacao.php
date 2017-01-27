@@ -53,6 +53,9 @@
         <script src="../adminLte/plugins/datatables/buttons.colVis.min.js"></script>
 
         <script src="../diretoria/js/listaPendentesAprovacao.js"></script>
+
+        <script src="http://cdn.rawgit.com/MrRio/jsPDF/master/dist/jspdf.min.js"></script>
+        <script src="http://html2canvas.hertzen.com/build/html2canvas.js"></script>
     </head>
 
     <body class="hold-transition skin-blue sidebar-mini">
@@ -339,7 +342,7 @@
                         </div>
 
                         <hr>
-                        
+
                         <h4>Anexos</h4>
 
                         <div class="row">
@@ -418,21 +421,21 @@
                                 </tr>
                                 <tr>
                                     <th>Junho</th>
-                                    <td><input type="checkbox" id="junSeg"></td>
-                                    <td><input type="checkbox" id="junTer"></td>
-                                    <td><input type="checkbox" id="junQua"></td>
-                                    <td><input type="checkbox" id="junQui"></td>
-                                    <td><input type="checkbox" id="junSex"></td>
-                                    <td><input type="checkbox" id="junSab"></td>
+                                    <td><span id="junSeg"></span></td>
+                                    <td><span id="junTer"></span></td>
+                                    <td><span id="junQua"></span></td>
+                                    <td><span id="junQui"></span></td>
+                                    <td><span id="junSex"></span></td>
+                                    <td><span id="junSab"></span></td>
                                 </tr>
                                 <tr>
                                     <th>Julho</th>
-                                    <td><input type="checkbox" id="julSeg"></td>
-                                    <td><input type="checkbox" id="julTer"></td>
-                                    <td><input type="checkbox" id="julQua"></td>
-                                    <td><input type="checkbox" id="julQui"></td>
-                                    <td><input type="checkbox" id="julSex"></td>
-                                    <td><input type="checkbox" id="julSab"></td>
+                                    <td><span id="julSeg"></span></td>
+                                    <td><span id="julTer"></span></td>
+                                    <td><span id="julQua"></span></td>
+                                    <td><span id="julQui"></span></td>
+                                    <td><span id="julSex"></span></td>
+                                    <td><span id="julSab"></span></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -450,13 +453,9 @@
                         <div class="clearfix"></div>
 
                     </form>
-
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" onclick="salvarAlteracoes()">Salvar Alterações</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 </html>

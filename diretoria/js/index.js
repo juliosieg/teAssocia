@@ -7,7 +7,7 @@ $(document).ready(function () {
     preencheGrafico1();
 
     preencheGrafico2();
-    
+
     $('[data-toggle="tooltip"]').tooltip({
         container: 'body'
     });
@@ -43,15 +43,15 @@ function getAssociadosPendentes() {
 function preencheGrafico1() {
 
     var associadosPendentes = null;
-    var associadosCadastrados = null;
+    var associadosAprovados = null;
 
     $.ajax({
         type: "POST",
         url: '../diretoria/funcoes/funcoesIndex.php',
-        data: {funcao: "getAssociadosCadastrados"},
+        data: {funcao: "getAssociadosAprovados"},
         success: function (data) {
             var test = jQuery.parseJSON(data);
-            associadosCadastrados = test[0]["count"];
+            associadosAprovados = test[0]["count"];
         },
         complete: function () {
 
@@ -67,7 +67,7 @@ function preencheGrafico1() {
 
 
                     var donutData = [
-                        {label: "Cadastrados", data: associadosCadastrados, color: "#3c8dbc"},
+                        {label: "Aprovados", data: associadosAprovados, color: "#3c8dbc"},
                         {label: "Pendentes", data: associadosPendentes, color: "#0073b7"}
                     ];
                     $.plot("#donut-chart", donutData, {

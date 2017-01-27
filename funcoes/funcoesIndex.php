@@ -389,29 +389,40 @@ function cadastraAssociado($entidadeAluno, $paradaAluno, $semestreAluno, $cursoA
     }
     $comprovanteMatricula = $_FILES["comprovanteMatricula"];
     $fototituloeleitor = $_FILES["tituloEleitorFoto"];
-    $fotoAluno = $_FILES["fotoAluno"];
+
+
+
+    if (!empty($_FILES["fotoAluno"])) {
+        $fotoAluno = $_FILES["fotoAluno"];
+        $extFoto = pathinfo($fotoAluno['name'], PATHINFO_EXTENSION);
+        $nomeComumFoto = "foto" . $cpfAluno . '.' . $extFoto;
+        $arquivo_nome_foto = $pasta_dir . $nomeComumFoto;
+        move_uploaded_file($fotoAluno["tmp_name"], $arquivo_nome_foto);
+    } else {
+        $arquivo_nome_foto = "";
+    }
 
     $extComprovante = pathinfo($comprovanteMatricula['name'], PATHINFO_EXTENSION);
     $extTituloEleitor = pathinfo($fototituloeleitor['name'], PATHINFO_EXTENSION);
-    $extFoto = pathinfo($fotoAluno['name'], PATHINFO_EXTENSION);
+
 
     $nomeComumComprovante = "comprovante" . $cpfAluno . '.' . $extComprovante;
     $nomeComumTituloEleitor = "tituloEleitor" . $cpfAluno . '.' . $extTituloEleitor;
-    $nomeComumFoto = "foto" . $cpfAluno . '.' . $extFoto;
+
 
     $arquivo_nome_comprovante = $pasta_dir . $nomeComumComprovante;
     $arquivo_nome_titulo = $pasta_dir . $nomeComumTituloEleitor;
-    $arquivo_nome_foto = $pasta_dir . $nomeComumFoto;
+
 
 //Faz o upload da imagem
 
     move_uploaded_file($comprovanteMatricula["tmp_name"], $arquivo_nome_comprovante);
     move_uploaded_file($fototituloeleitor["tmp_name"], $arquivo_nome_titulo);
-    move_uploaded_file($fotoAluno["tmp_name"], $arquivo_nome_foto);
+
 
     try {
         $sql = "insert into associado(cpf, rg, nome, endereco, bairro, cep, telefone, celular, email, curso, idsemestre, idparada, identidade, idcidade, idestado, status, tituloeleitor, dtnascimento, zonaeleitoral, secaoeleitoral, matricula, tiposanguineo, diapagamento, comprovantematricula, fototituloeleitor, observacoesAluno) "
-                . "values(" . $cpfAluno . "," . $rgAluno . ",'" . $nomeAluno . "','" . $enderecoAluno . "','" . $bairroAluno . "', '" . $cepAluno . "', '" . $telefoneAluno . "', '" . $celularAluno . "', '" . $emailAluno . "', '" . $cursoAluno . "', " . $semestreAluno . ", " . $paradaAluno . ", " . $entidadeAluno . ", " . $cidadeAluno . ", " . $ufAluno . ", 2, '" . $tituloEleitoralAluno . "', '" . $dataNascimentoAluno . "', '" . $zonaEleitoralAluno . "', '" . $secaoEleitoralAluno . "', '" . $matriculaAluno . "', '" . $tipoSanguineoAluno . "', '" . $melhorDiaPagamento . "', '" . $arquivo_nome_comprovante . "', '" . $arquivo_nome_titulo . "', '".$observacoesAluno."')";
+                . "values(" . $cpfAluno . "," . $rgAluno . ",'" . $nomeAluno . "','" . $enderecoAluno . "','" . $bairroAluno . "', '" . $cepAluno . "', '" . $telefoneAluno . "', '" . $celularAluno . "', '" . $emailAluno . "', '" . $cursoAluno . "', " . $semestreAluno . ", " . $paradaAluno . ", " . $entidadeAluno . ", " . $cidadeAluno . ", " . $ufAluno . ", 2, '" . $tituloEleitoralAluno . "', '" . $dataNascimentoAluno . "', '" . $zonaEleitoralAluno . "', '" . $secaoEleitoralAluno . "', '" . $matriculaAluno . "', '" . $tipoSanguineoAluno . "', '" . $melhorDiaPagamento . "', '" . $arquivo_nome_comprovante . "', '" . $arquivo_nome_titulo . "', '" . $observacoesAluno . "')";
         $conexao->Executar($sql);
 
         $sql = "select id from associado where cpf = " . $cpfAluno;
@@ -419,7 +430,7 @@ function cadastraAssociado($entidadeAluno, $paradaAluno, $semestreAluno, $cursoA
         $result = $conexao->MontarResultados();
         $id = $result[0]['id'];
 
-        $sql = "insert into usuario(senha, id_associado, email, imagem_perfil, perfil) values ('" . $senhaComHash . "'," . $id . ",'".$emailAluno."', '" . $arquivo_nome_foto . "', 1)";
+        $sql = "insert into usuario(senha, id_associado, email, imagem_perfil, perfil) values ('" . $senhaComHash . "'," . $id . ",'" . $emailAluno . "', '" . $arquivo_nome_foto . "', 1)";
         //No perfil insere 1 pra aluno e 2 pra diretoria
         $conexao->Executar($sql);
 

@@ -116,46 +116,42 @@ function consultaCpf() {
     }
 }
 
-function validaCpf(strCpf) {
-    var soma;
-    var resto;
-    soma = 0;
-    if (strCpf == "00000000000") {
+function validaCpf(c){
+    var i;
+    s = c;
+    var c = s.substr(0,9);
+    var dv = s.substr(9,2);
+    var d1 = 0;
+    var v = false;
+ 
+    for (i = 0; i < 9; i++){
+        d1 += c.charAt(i)*(10-i);
+    }
+    if (d1 == 0){
+        v = true;
         return false;
     }
-
-    for (i = 1; i <= 9; i++) {
-        soma = soma + parseInt(strCpf.substring(i - 1, i)) * (11 - i);
-    }
-
-    resto = soma % 11;
-    if (resto == 10 || resto == 11 || resto < 2) {
-        resto = 0;
-    } else {
-        resto = 11 - resto;
-    }
-
-    if (resto != parseInt(strCpf.substring(9, 10))) {
+    d1 = 11 - (d1 % 11);
+    if (d1 > 9) d1 = 0;
+    if (dv.charAt(0) != d1){
+        v = true;
         return false;
     }
-
-    soma = 0;
-    for (i = 1; i <= 10; i++) {
-        soma = soma + parseInt(strCpf.substring(i - 1, i)) * (12 - i);
+ 
+    d1 *= 2;
+    for (i = 0; i < 9; i++){
+        d1 += c.charAt(i)*(11-i);
     }
-    resto = soma % 11;
-    if (resto == 10 || resto == 11 || resto < 2) {
-        resto = 0;
-    } else {
-        resto = 11 - resto;
-    }
-
-    if (resto != parseInt(strCpf.substring(10, 11))) {
+    d1 = 11 - (d1 % 11);
+    if (d1 > 9) d1 = 0;
+    if (dv.charAt(1) != d1){
+        
+        v = true;
         return false;
     }
-
-
-    return true;
+    if (!v) {
+        return true;
+    }
 }
 
 function abreModalCadastro() {

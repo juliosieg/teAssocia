@@ -10,6 +10,10 @@ switch ($funcao) {
         break;
     case "getAssociadosPorEntidade":
         getAssociadosPorEntidade();
+        break;
+    case "getAssociadosAprovados":
+        getAssociadosAprovados();
+        break;
 }
 
 function getAssociadosCadastrados() {
@@ -46,6 +50,23 @@ function getAssociadosPendentes() {
     }
 }
 
+function getAssociadosAprovados() {
+    include 'conexao.php';
+
+    $conexao = new Conexao();
+    $conexao->Conexao();
+
+    try {
+        $sql = "select count(id) from associado where status=1";
+        $conexao->Executar($sql);
+        $result = $conexao->MontarResultados();
+        $json = json_encode($result);
+        echo $json;
+    } catch (Exception $e) {
+        echo $e;
+    }
+}
+
 function getAssociadosPorEntidade() {
 
     include 'conexao.php';
@@ -57,8 +78,8 @@ function getAssociadosPorEntidade() {
         $sql = "select count(a.identidade) as associados, e.nome from associado a inner join entidade e on e.id = a.identidade group by e.nome";
         $resultado = $conexao->Executar($sql);
 
-        $result = [];
-        
+        $result = array();
+
         while ($row = pg_fetch_array($resultado)) {
 
             array_push($result, $row['nome'], $row['associados']);
@@ -66,7 +87,6 @@ function getAssociadosPorEntidade() {
 
         $json = json_encode($result);
         echo $json;
-        
     } catch (Exception $e) {
         echo $e;
     }
