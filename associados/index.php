@@ -20,6 +20,9 @@
         <!--Bootstrap -->
         <link rel="stylesheet" href="../adminLte/bootstrap/css/bootstrap.min.css">
 
+        <script src="js/sweetalert.min.js"></script>
+        <link rel="stylesheet" href="css/sweetalert.css">
+
 
         <!--jQuery -->
         <script src = "../adminLte/plugins/jQuery/jQuery-2.2.0.min.js"></script>
@@ -110,21 +113,21 @@
                                     avaliadas e desenvolvidas no decorrer do semestre, e já estarão disponíveis também 
                                     no semestre 2017/2 em fase de testes.
                                     Por isso, gostaríamos da sua ajuda. Faça sua sugestão, e deixe o sistema com a sua cara. 
-                                    
+
                                 </h7>
-                                
+
                                 <br/>
                                 <br/>
                                 <span style="font-weight: bold">Sugestões</span>
                                 <form>
-                                    
+
                                     <div class="row">
                                         <div class="col-md-12">
                                             <textarea id="sugestaoAluno" class="form-control" rows="8"></textarea>
                                         </div>   
                                     </div>
                                     <br/>
-                                    <button class="btn-lg btn btn-success left" onclick="enviarSugestao()">Enviar</button>
+                                    <input type="button" class="btn-lg btn btn-success left" value="Enviar" onclick="enviarSugestao()"/>
                                 </form>
                             </div>
                             <!-- /.box-body -->
