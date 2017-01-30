@@ -846,7 +846,7 @@ function efetuarLogin() {
                     //Testa se o perfil é diretoria ou aluno
                     if (perfil == '1') {
 
-                        window.location.replace("aluno/index.php");
+                        window.location.replace("associados/index.php");
 
                     } else if (perfil == '2') {
 

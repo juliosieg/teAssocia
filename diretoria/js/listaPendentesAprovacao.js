@@ -1,6 +1,6 @@
 $(document).ready(function () {
     getTodos();
-   
+
 });
 
 function getTodos() {
@@ -49,7 +49,7 @@ function verFicha(codigo) {
     $("#modalVerFicha").modal("show");
     $.ajax({
         type: "POST",
-        url: '../diretoria/funcoes/funcoesListaPendentesAprovacao.php',
+        url: '../diretoria/funcoes/funcoesPendentesAprovacao.php',
         data: {funcao: "getFichaAssociadoPendente", codigo: codigo},
         success: function (data) {
             var test = jQuery.parseJSON(data);
@@ -100,8 +100,8 @@ function verFicha(codigo) {
             $("#maiSex").html("<p align='center'></p>");
             $("#maiSab").html("<p align='center'></p>");
             $("#junSeg").html("<p align='center'></p>");
-            $("#junTer").html("<p align='center'>X</p>");
-            $("#junQua").html("<p align='center'>X</p>");
+            $("#junTer").html("<p align='center'></p>");
+            $("#junQua").html("<p align='center'></p>");
             $("#junQui").html("<p align='center'></p>");
             $("#junSex").html("<p align='center'></p>");
             $("#junSab").html("<p align='center'></p>");
@@ -127,7 +127,8 @@ function verFicha(codigo) {
 
             var cpf = preencheZerosAEsquerdaCPF(test[0]['cpf']);
 
-            $("#cpfAluno").text(cpf);
+            $("#cpfAluno").text(format('XXX.XXX.XXX-XX', cpf));
+
             $("#tituloEleitorAluno").text(test[0]['tituloeleitor']);
             $("#zonaEleitoralAluno").text(test[0]['zonaeleitoral']);
             $("#secaoEleitoralAluno").text(test[0]['secaoeleitoral']);
@@ -135,8 +136,17 @@ function verFicha(codigo) {
             $("#ufAluno").text(test[0]['nomeestado']);
             $("#cidadeAluno").text(test[0]['nomecidade']);
             $("#bairroAluno").text(test[0]['bairro']);
-            $("#cepAluno").text(test[0]['cep']);
-            $("#celularAluno").text(test[0]['celular']);
+
+            $("#cepAluno").text(format('XXXXX-XXX', test[0]['cep']));
+
+
+            var celular = test[0]['celular'];
+            if (celular.length == 11) {
+                $("#celularAluno").text(format('(XX) XXXXX-XXXX', celular));
+            } else {
+                $("#celularAluno").text(format('(XX) XXXX-XXXX', celular));
+            }
+
             $("#emailAluno").text(test[0]['email']);
             $("#cursoAluno").text(test[0]['curso']);
             $("#matriculaAluno").text(test[0]['matricula']);
@@ -147,7 +157,7 @@ function verFicha(codigo) {
             $("#melhorDiaPagamento").text(test[0]['diapagamento']);
 
             if (test[0]['telefone'] != null && test[0]['telefone'] != "") {
-                $("#telefoneAluno").text(test[0]['telefone']);
+                $("#telefoneAluno").text(format('(XX) XXXX-XXXX', test[0]['telefone']));
             } else {
                 $("#telefoneAluno").text("Não preenchido");
             }
@@ -175,6 +185,15 @@ function verFicha(codigo) {
             } else {
                 $("#comprovanteMatricula").text("Não preenchido");
             }
+            
+            var observacoesAluno = test[0]['observacoesaluno'];
+            var newObservacoes = observacoesAluno.trim("");
+            
+            if (observacoesAluno != null && observacoesAluno != "" && newObservacoes != "" && newObservacoes != null) {
+                $("#observacoesAluno").text(test[0]['observacoesaluno']);
+            } else {
+                $("#observacoesAluno").text("Não preenchido");
+            } 
 
             if (test[0]['segfev'] == '1') {
                 $("#fevSeg").html("<p align='center'>X</p>");
@@ -337,3 +356,60 @@ function preencheZerosAEsquerdaCPF(str) {
     return foo;
 // agora coloque foo de novo na caixa de texto.
 }
+
+function format(mask, number) {
+    var s = '' + number, r = '';
+    for (var im = 0, is = 0; im < mask.length && is < s.length; im++) {
+        r += mask.charAt(im) == 'X' ? s.charAt(is++) : mask.charAt(im);
+    }
+    return r;
+}
+
+function aprovarCadastro(codigo) {
+
+    $.ajax({
+        type: "POST",
+        url: '../diretoria/funcoes/funcoesPendentesAprovacao.php',
+        data: {funcao: "buscaDadosAprovacao", codigo: codigo},
+        success: function (data) {
+            var test = jQuery.parseJSON(data);
+            swal({
+                title: "Aprovação de Ficha Cadastral",
+                text: "Você tem certeza que deseja aprovar a ficha cadastral de " + test[0]['nome'] + "?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#00b51e",
+                confirmButtonText: "Sim!",
+                closeOnConfirm: false
+            },
+                    function () {
+
+                        $.ajax({
+                            type: "POST",
+                            url: '../diretoria/funcoes/funcoesPendentesAprovacao.php',
+                            data: {funcao: "atualizarStatus", codigo: codigo},
+                            success: function () {
+                                var table = $("#tableAssociadosPendentes").DataTable();
+                                table.ajax.reload(null, false);
+                            }
+                        });
+
+
+
+                        var email = test[0]['email'];
+                        var nome = test[0]['nome'];
+
+                        $.ajax({
+                            type: "POST",
+                            url: '../diretoria/funcoes/funcoesPendentesAprovacao.php',
+                            data: {funcao: "enviarEmailConfirmacao", nome: nome, email: email},
+                            success: function (data) {
+                                swal("Certo!", "A ficha cadastral foi aprovada.", "success");
+                            }
+                        });
+
+                    });
+        }
+    });
+}
+

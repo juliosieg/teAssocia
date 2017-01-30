@@ -1,3 +1,25 @@
+<?php
+
+// Sistema para verificar se o usuário já está logado ou não e testar perfil
+session_start();
+if (!$_SESSION['logado']) {
+    header("Location: ../index.php");
+}else if($_SESSION['perfil'] != 2){
+    session_destroy();
+    echo"<script language='javascript' type='text/javascript'>alert('Perfil sem permissão para acessar essa página.');window.location.href='../index.php';</script>";
+}else{
+    $now = time(); // Checking the time now when home page starts.
+    if ($now > $_SESSION['expire']) {
+        session_destroy();
+        echo"<script language='javascript' type='text/javascript'>alert('Sua sessão expirou! É necessário entrar novamente.');window.location.href='../index.php';</script>";
+    }
+    $nomeUsuarioLogado = $_SESSION['nomeLogado'];
+    $imagemUsuarioLogado = $_SESSION['imagemLogado'];
+    
+}
+
+?>
+
 <html>
     <head>
         <title>teAssocia - Área da Diretoria</title>
@@ -149,6 +171,13 @@
                                     <a href="../admin/listarTipos.php" class="desabilitada"><i class="fa fa-book"></i> Semestres</a>
                                 </li>
                             </ul>
+                        </li>
+                        
+                        <li>
+                            <a href="../funcoes/logout.php">
+                                <i class="fa fa-sign-out"></i>
+                                <span>Sair</span>
+                            </a>
                         </li>
 
                     </ul>

@@ -9,6 +9,7 @@ function enviarSugestao() {
         success: function (html) {
             if (html == 'OK') {
                 swal("Obrigado!", "Sua sugestão foi enviada com sucesso.", 'success');
+                $("#sugestaoAluno").val("");
             } else {
                 swal("Erro!", "Ocorreu um erro no envio da sugestão, tente novamente.", 'error');
             }

@@ -2,11 +2,11 @@
 
 class Conexao {
 
-    var $user = "te_associa";
-    var $pass = "juliosieg1152";
-    var $host = "te_associa.postgresql.dbaas.com.br";
+    var $user = "auedi2017";
+    var $pass = "au2017edi";
+    var $host = "auedi2017.postgresql.dbaas.com.br";
     var $port = "5432";
-    var $dbname = "te_associa";
+    var $dbname = "auedi2017";
     var $link;
     var $result;
 

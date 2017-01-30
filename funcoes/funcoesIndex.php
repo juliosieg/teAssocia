@@ -390,16 +390,15 @@ function cadastraAssociado($entidadeAluno, $paradaAluno, $semestreAluno, $cursoA
     $comprovanteMatricula = $_FILES["comprovanteMatricula"];
     $fototituloeleitor = $_FILES["tituloEleitorFoto"];
 
-
-
-    if (!empty($_FILES["fotoAluno"])) {
-        $fotoAluno = $_FILES["fotoAluno"];
-        $extFoto = pathinfo($fotoAluno['name'], PATHINFO_EXTENSION);
+    $fotoAluno = $_FILES["fotoAluno"];    
+    $extFoto = pathinfo($fotoAluno['name'], PATHINFO_EXTENSION);
+    
+    if ($extFoto == "") {
         $nomeComumFoto = "foto" . $cpfAluno . '.' . $extFoto;
         $arquivo_nome_foto = $pasta_dir . $nomeComumFoto;
         move_uploaded_file($fotoAluno["tmp_name"], $arquivo_nome_foto);
     } else {
-        $arquivo_nome_foto = "";
+        $arquivo_nome_foto = "../docsAssociados/semFoto.png";
     }
 
     $extComprovante = pathinfo($comprovanteMatricula['name'], PATHINFO_EXTENSION);

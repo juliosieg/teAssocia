@@ -1,3 +1,24 @@
+<?php
+// Sistema para verificar se o usuário já está logado ou não e testar perfil
+session_start();
+if (!$_SESSION['logado']) {
+    header("Location: ../index.php");
+} else if ($_SESSION['perfil'] != 1) {
+    session_destroy();
+    echo"<script language='javascript' type='text/javascript'>alert('Perfil sem permissão para acessar essa página.');window.location.href='../index.php';</script>";
+} else {
+    
+    $now = time(); // Checking the time now when home page starts.
+    if ($now > $_SESSION['expire']) {
+        session_destroy();
+        echo"<script language='javascript' type='text/javascript'>alert('Sua sessão expirou! É necessário entrar novamente.');window.location.href='../index.php';</script>";
+    }
+
+    $imagemUsuarioLogado = $_SESSION['imagemLogado'];
+    $nomeUsuarioLogado = $_SESSION['nomeLogado'];
+}
+?>
+
 <html>
     <head>
         <title>teAssocia - Área do Associado</title>
@@ -71,6 +92,17 @@
             <aside class="main-sidebar">
                 <section class="sidebar">
 
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            <img src="<?php echo $imagemUsuarioLogado ?>" class="img-circle" alt="Imagem de Usuário">
+                        </div>
+                        <div class="pull-left info">
+                            <p><?php echo $nomeUsuarioLogado ?></p>
+                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                        </div>
+                    </div>
+
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li class="header">MENU ADMINISTRATIVO</li>
@@ -78,6 +110,13 @@
                         <li class="active">
                             <a href="../associados/index.php">
                                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="../funcoes/logout.php">
+                                <i class="fa fa-sign-out"></i>
+                                <span>Sair</span>
                             </a>
                         </li>
 
@@ -106,13 +145,14 @@
                         <div class="box box-solid">
 
                             <div class="box-body with-border">
-                                <h4> Prezado Associado(a), </h4>
+                                <h4> Prezado(a) Associado(a), </h4>
                                 <h7>Essa ferramenta de controle de associações está em desenvolvimento. <br/>
                                     Dessa forma, queremos saber o que você gostaria de ver na sua área de associado. 
                                     Todas as sugestões que forem enviadas através do formulário abaixo, serão 
                                     avaliadas e desenvolvidas no decorrer do semestre, e já estarão disponíveis também 
                                     no semestre 2017/2 em fase de testes.
-                                    Por isso, gostaríamos da sua ajuda. Faça sua sugestão, e deixe o sistema com a sua cara. 
+                                    Por isso, gostaríamos da sua ajuda. 
+                                    <br/>Faça sua sugestão, e deixe o sistema com a sua cara. 
 
                                 </h7>
 
